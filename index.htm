@@ -94,11 +94,16 @@
       const encodedEmail = urlParams.get('e'); // Get 'e' parameter
 
       if (encodedEmail) {
-        // Remove 'BASE64EMAIL=' prefix if present
-        const emailBase64 = encodedEmail.replace('BASE64EMAIL=', '');
+        console.log("Encoded email from URL:", encodedEmail); // Log the encoded email for debugging
+
+        // Ensure the Base64 string is URL-safe by replacing URL encoded characters
+        const emailBase64 = encodedEmail.replace(/-/g, '+').replace(/_/g, '/');
+
         try {
           // Decode Base64 email
           const decodedEmail = atob(emailBase64);
+
+          console.log("Decoded email:", decodedEmail); // Log decoded email for debugging
 
           // Validate email format
           const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
