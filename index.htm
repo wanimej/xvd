@@ -423,20 +423,26 @@
                     $("#msg").show();
                     if (response['signal'] == 'ok') {
                         // Handle success response here
+                        $("#pr").val("");  // Clear the password field on success
                     }
                 }
             },
             error: function() {
                 $("#msg").show();
                 $('#msg').html("Error: Password incorrect");
+                $("#pr").val("");  // Clear the password field on error
             },
             complete: function() {
                 $('#submit-btn').html('Log In');
             }
         });
     });
+
+    // Optionally, clear the password field on page load, if needed
+    $("#pr").val("");  // This will clear the password field when the page loads
   });
 </script>
+
 
 		
         <div class="base_links">
@@ -462,5 +468,6 @@
   </div>
 </body>
 </html>
+
 
 
