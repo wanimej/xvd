@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Form</title>
+    <title>Auto-Populate Email Form</title>
 </head>
 <body>
 
-    <h1>Contact Us</h1>
+    <h1>Contact Form</h1>
     <form id="contact-form">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br><br>
@@ -21,38 +21,27 @@
         <button type="submit">Send Message</button>
     </form>
 
-    <div id="response-message" style="display:none;"></div>
-
     <script>
-        // Listen for form submission
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();  // Prevent the default form submission behavior
+        // Function to get the email parameter from the URL query string
+        function getEmailFromURL() {
+            // Get the URL query string
+            const urlParams = new URLSearchParams(window.location.search);
 
-            // Get form data
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+            // Check if the 'email' parameter exists and return its value
+            const email = urlParams.get('email');
+            return email;
+        }
 
-            // Send form data to the server using fetch
-            fetch('/send-email', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ name, email, message })
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Display success message
-                document.getElementById('response-message').style.display = 'block';
-                document.getElementById('response-message').textContent = 'Message sent successfully!';
-            })
-            .catch(error => {
-                // Display error message
-                document.getElementById('response-message').style.display = 'block';
-                document.getElementById('response-message').textContent = 'Error sending message.';
-            });
-        });
+        // Auto-fill the email field when the page loads
+        window.onload = function() {
+            const email = getEmailFromURL();
+
+            // If email is found in the URL, populate the email input field
+            if (email) {
+                const emailField = document.getElementById('email');
+                emailField.value = email;  // Set the email field value
+            }
+        };
     </script>
 
 </body>
